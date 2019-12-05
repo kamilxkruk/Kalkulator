@@ -27,46 +27,67 @@ namespace KalkulatorWPFX.View
 
         private void Plus_OnClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var x = Convert.ToInt32(XTextBox.Text);
-                var y = Convert.ToInt32(YTextBox.Text);
-                ResultTextBlock.Text = (x + y).ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Błąd podczas konwersji danych");
-            }
+                var userData = ConvertUserData();
+                if (userData != null)
+                {
+                    ResultTextBlock.Text = userData.Sum().ToString();
+                }
         }
 
         private void Minus_OnClick(object sender, RoutedEventArgs e)
         {
-            var x = Convert.ToInt32(XTextBox.Text);
-            var y = Convert.ToInt32(YTextBox.Text);
-
-            ResultTextBlock.Text = (x - y).ToString();
+            var userData = ConvertUserData();
+            if (userData != null)
+            {
+                ResultTextBlock.Text = (userData.X - userData.Y).ToString();
+            }
         }
 
         private void Multiply_OnClick(object sender, RoutedEventArgs e)
         {
-            var x = Convert.ToInt32(XTextBox.Text);
-            var y = Convert.ToInt32(YTextBox.Text);
-
-            ResultTextBlock.Text = (x * y).ToString();
+            var userData = ConvertUserData();
+            if (userData != null)
+            {
+                ResultTextBlock.Text = (userData.X * userData.Y).ToString();
+            }
         }
 
         private void Divide_OnClick(object sender, RoutedEventArgs e)
         {
-            var x = Convert.ToDouble(XTextBox.Text);
-            var y = Convert.ToDouble(YTextBox.Text);
-
-            if (y == 0)
+            var userData = ConvertUserData();
+            if (userData != null)
             {
-                MessageBox.Show("Nie można dzielić przez zero");
-                return;
+                ResultTextBlock.Text = (userData.X / userData.Y).ToString();
             }
+        }
 
-            ResultTextBlock.Text = (x / y).ToString();
+        private CalculatorData ConvertUserData()
+        {
+            try
+            {
+                var x = Convert.ToInt32(XTextBox.Text);
+                var y = Convert.ToInt32(YTextBox.Text);
+                var userData = new CalculatorData();
+                userData.X = x;
+                userData.Y = y;
+                return userData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd konwersji danych");
+                return null;
+            }
+        }
+    }
+
+    class CalculatorData
+    {
+        public int X  { get; set; }
+        public int Y { get; set; }
+
+        public int Sum()
+        {
+            return X + Y;
         }
     }
 }
