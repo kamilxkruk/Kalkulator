@@ -18,6 +18,7 @@ namespace KalkulatorWPFX
             InitializeComponent();
             calculatorView = new CalculatorView();
             homeView = new HomeView();
+            palindromView = new Palindrom();
         }
 
         private void Home_OnClick(object sender, RoutedEventArgs e)
@@ -28,6 +29,11 @@ namespace KalkulatorWPFX
         private void Calculator_OnClick(object sender, RoutedEventArgs e)
         {
             ContentPresenter.Content = calculatorView;
+        }
+
+        private void Palindrom_OnClick(object sender, RoutedEventArgs e)
+        {
+            ContentPresenter.Content = palindromView;
         }
 
     }

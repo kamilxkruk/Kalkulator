@@ -19,7 +19,8 @@
 
         <Button Content="Home" Click="Home_OnClick"/>
         <Button Content="Calculator" Grid.Column="1" Click="Calculator_OnClick"/>
+        <Button Content="Palindrom" Grid.Column="2" Click="Palindrom_OnClick"/>
 
-        <ContentPresenter x:Name="ContentPresenter" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ContentPresenter x:Name="ContentPresenter" Grid.Row="1" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>
