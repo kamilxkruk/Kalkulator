@@ -27,10 +27,16 @@ namespace KalkulatorWPFX.View
 
         private void Plus_OnClick(object sender, RoutedEventArgs e)
         {
-            var x = Convert.ToInt32(XTextBox.Text);
-            var y = Convert.ToInt32(YTextBox.Text);
-
-            ResultTextBlock.Text = (x + y).ToString();
+            try
+            {
+                var x = Convert.ToInt32(XTextBox.Text);
+                var y = Convert.ToInt32(YTextBox.Text);
+                ResultTextBlock.Text = (x + y).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas konwersji danych");
+            }
         }
 
         private void Minus_OnClick(object sender, RoutedEventArgs e)
@@ -39,6 +45,28 @@ namespace KalkulatorWPFX.View
             var y = Convert.ToInt32(YTextBox.Text);
 
             ResultTextBlock.Text = (x - y).ToString();
+        }
+
+        private void Multiply_OnClick(object sender, RoutedEventArgs e)
+        {
+            var x = Convert.ToInt32(XTextBox.Text);
+            var y = Convert.ToInt32(YTextBox.Text);
+
+            ResultTextBlock.Text = (x * y).ToString();
+        }
+
+        private void Divide_OnClick(object sender, RoutedEventArgs e)
+        {
+            var x = Convert.ToDouble(XTextBox.Text);
+            var y = Convert.ToDouble(YTextBox.Text);
+
+            if (y == 0)
+            {
+                MessageBox.Show("Nie można dzielić przez zero");
+                return;
+            }
+
+            ResultTextBlock.Text = (x / y).ToString();
         }
     }
 }

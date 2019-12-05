@@ -30,7 +30,9 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" >
             <Button Width="50" Height="50" Content="+" Click="Plus_OnClick"/>
             <Button Width="50" Height="50" Content="-" Click="Minus_OnClick"/>
+            <Button Width="50" Height="50" Content="*" Click="Multiply_OnClick"/>
+            <Button Width="50" Height="50" Content="/" Click="Divide_OnClick"/>
         </StackPanel>
-
+        
 </Grid>
 </UserControl>
