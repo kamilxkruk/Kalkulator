@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KalkulatorWPFX.Model;
 
 namespace KalkulatorWPFX.View
 {
@@ -39,7 +40,7 @@ namespace KalkulatorWPFX.View
             var userData = ConvertUserData();
             if (userData != null)
             {
-                ResultTextBlock.Text = (userData.X - userData.Y).ToString();
+                ResultTextBlock.Text = userData.Subtract().ToString();
             }
         }
 
@@ -48,7 +49,7 @@ namespace KalkulatorWPFX.View
             var userData = ConvertUserData();
             if (userData != null)
             {
-                ResultTextBlock.Text = (userData.X * userData.Y).ToString();
+                ResultTextBlock.Text = userData.Multiply().ToString();
             }
         }
 
@@ -57,7 +58,7 @@ namespace KalkulatorWPFX.View
             var userData = ConvertUserData();
             if (userData != null)
             {
-                ResultTextBlock.Text = (userData.X / userData.Y).ToString();
+                ResultTextBlock.Text = userData.Divide().ToString();
             }
         }
 
@@ -67,9 +68,7 @@ namespace KalkulatorWPFX.View
             {
                 var x = Convert.ToInt32(XTextBox.Text);
                 var y = Convert.ToInt32(YTextBox.Text);
-                var userData = new CalculatorData();
-                userData.X = x;
-                userData.Y = y;
+                var userData = new CalculatorData(x,y);
                 return userData;
             }
             catch (Exception ex)
@@ -80,14 +79,5 @@ namespace KalkulatorWPFX.View
         }
     }
 
-    class CalculatorData
-    {
-        public int X  { get; set; }
-        public int Y { get; set; }
-
-        public int Sum()
-        {
-            return X + Y;
-        }
-    }
+    
 }

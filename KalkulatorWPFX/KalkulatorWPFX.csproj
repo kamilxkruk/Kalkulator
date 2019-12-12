@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CalculatorData.cs" />
     <Compile Include="View\Palindrom.xaml.cs">
       <DependentUpon>Palindrom.xaml</DependentUpon>
     </Compile>
